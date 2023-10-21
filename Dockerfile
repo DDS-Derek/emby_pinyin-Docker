@@ -20,6 +20,7 @@ RUN set -ex && \
     apk add --no-cache --virtual=build-dependencies git && \
     sed -i "s#;phar.readonly = On#phar.readonly = Off#g" /etc/php81/php.ini && \
     git clone -b master https://github.com/hisune/emby_pinyin.git /app && \
+    cd /app && \
     composer pre-install && \
     apk del --purge build-dependencies && \
     rm -rf \

@@ -108,7 +108,7 @@ docker exec -it builder_ddsrem \
     ${TAG} \
     --push \
     .
-docker pushrm -p dockerhub -f README.md -s "${image_description}" ${DockerHub_Repo}
+docker exec -it builder_ddsrem docker pushrm --provider dockerhub --file README.md -s "${image_description}" ${DockerHub_Repo}
 }
 
 get_info

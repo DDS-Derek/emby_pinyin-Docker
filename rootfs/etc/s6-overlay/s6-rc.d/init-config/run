@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+if [ "${CRON_ENABLED}" == "true" ]; then
+    if [ -f /tmp/crontab.list ]; then
+        rm -rf /tmp/crontab.list
+    fi
+    touch /tmp/crontab.list
+
+    echo -e "${CRON_SCHEDULE} s6-setuidgid root php /app/run.php --host=${HOST} --key=${API_KEY} --type=${SORT_TYPE} --all=y" >> /tmp/crontab.list
+
+    crontab -r
+    crontab /tmp/crontab.list
+fi

@@ -7,18 +7,18 @@ RUN set -ex && \
         curl \
         tzdata \
         s6-overlay \
-        php82 \
-        php82-curl \
-        php82-dev \
-        php82-iconv \
-        php82-json \
-        php82-mbstring \
-        php82-openssl \
-        php82-phar \
-        php82-zip \
+        php83 \
+        php83-curl \
+        php83-dev \
+        php83-iconv \
+        php83-json \
+        php83-mbstring \
+        php83-openssl \
+        php83-phar \
+        php83-zip \
         composer && \
     apk add --no-cache --virtual=build-dependencies git && \
-    sed -i "s#;phar.readonly = On#phar.readonly = Off#g" /etc/php82/php.ini && \
+    sed -i "s#;phar.readonly = On#phar.readonly = Off#g" /etc/php83/php.ini && \
     git clone -b master https://github.com/hisune/emby_pinyin.git /app && \
     cd /app && \
     composer pre-install && \
